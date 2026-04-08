@@ -50,6 +50,7 @@ Built for the portfolio to showcase modern full-stack development skills.
 ## ✨ Key Features
 
 ### 🎨 **Modern UI/UX**
+
 - Clean, minimalist design inspired by Vercel and Stripe dashboards
 - Fully responsive layout (mobile, tablet, desktop)
 - Smooth animations and transitions
@@ -57,6 +58,7 @@ Built for the portfolio to showcase modern full-stack development skills.
 - Accessible (ARIA labels, semantic HTML, keyboard navigation)
 
 ### 📊 **Real-Time Crypto Data**
+
 - Live cryptocurrency prices and market data
 - Interactive charts with Recharts library
 - Market analytics and trends
@@ -64,6 +66,7 @@ Built for the portfolio to showcase modern full-stack development skills.
 - Global market statistics
 
 ### ⚡ **Performance Optimized**
+
 - **40% smaller initial bundle** through code splitting
 - **50% faster Time to Interactive** with lazy loading
 - **82% fewer re-renders** with proper memoization
@@ -71,19 +74,23 @@ Built for the portfolio to showcase modern full-stack development skills.
 - Bundle analyzer integration for monitoring
 
 ### 🗄️ **Advanced State Management**
+
 - **TanStack Query (React Query)**: Server state with automatic caching, background updates, and stale-while-revalidate
 - **Zustand**: Lightweight client state with DevTools and persistence
 - Shared cache across routes for instant navigation
 - Optimistic updates and error recovery
 
 ### 🛡️ **Robust Error Handling**
+
 - Global error boundary with fallback UI
 - API error handling with retry logic
-- 429 rate limit detection and recovery
-- User-friendly error messages with retry actions
+- 429 rate limit detection with user-friendly explanations
+- Clear messaging that errors are due to API limits, not app issues
+- Automatic retry with helpful guidance (wait 1-2 minutes)
 - Development vs production error modes
 
 ### 🧪 **Comprehensive Testing**
+
 - Unit tests for utilities and business logic
 - Component tests with React Testing Library
 - Store tests for state management
@@ -91,6 +98,7 @@ Built for the portfolio to showcase modern full-stack development skills.
 - CI/CD ready test suite
 
 ### 📦 **Production Ready**
+
 - Environment-based configuration
 - Bundle optimization and tree shaking
 - Image optimization (AVIF/WebP)
@@ -103,36 +111,43 @@ Built for the portfolio to showcase modern full-stack development skills.
 ## 🛠️ Tech Stack
 
 ### **Core Framework**
+
 - **[Next.js 14](https://nextjs.org/)** - React framework with App Router, Server Components, and streaming
 - **[React 18](https://react.dev/)** - Latest React with concurrent features
 - **[TypeScript 5.4](https://www.typescriptlang.org/)** - Static type checking with strict mode
 
 ### **Styling**
+
 - **[Tailwind CSS 3.4](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[clsx](https://github.com/lukeed/clsx)** + **[tailwind-merge](https://github.com/dcastil/tailwind-merge)** - Conditional classes
 - **[Lucide React](https://lucide.dev/)** - Beautiful, consistent icon library
 
 ### **Data Fetching & State**
+
 - **[TanStack Query v5](https://tanstack.com/query)** - Powerful async state management
 - **[Zustand](https://zustand-demo.pmnd.rs/)** - Minimalist state management
 - **[React Hook Form](https://react-hook-form.com/)** - Performant form validation
 - **[Zod](https://zod.dev/)** - TypeScript-first schema validation
 
 ### **Data Visualization**
+
 - **[Recharts](https://recharts.org/)** - Composable charting library built on React components
 
 ### **Testing**
+
 - **[Vitest](https://vitest.dev/)** - Blazing fast unit test framework
 - **[React Testing Library](https://testing-library.com/react)** - Best-practice component testing
 - **[@testing-library/jest-dom](https://github.com/testing-library/jest-dom)** - Custom matchers
 - **[jsdom](https://github.com/jsdom/jsdom)** - Browser environment simulation
 
 ### **Development Tools**
+
 - **[@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)** - Bundle size visualization
 - **[TanStack Query DevTools](https://tanstack.com/query/latest/docs/react/devtools)** - Debug queries in development
 - **[ESLint](https://eslint.org/)** - Code linting and formatting
 
 ### **API Integration**
+
 - **[CoinGecko API](https://www.coingecko.com/en/api)** - Cryptocurrency data provider
 - Custom API client with error handling
 - Rate limit management and retry logic
@@ -168,26 +183,26 @@ Built for the portfolio to showcase modern full-stack development skills.
 ### **Key Architectural Decisions**
 
 1. **Separation of Concerns**
-   - Clear boundaries between UI, business logic, and data access
-   - Reusable UI primitives (`Button`, `Card`, `Avatar`, etc.)
-   - Feature-based component organization
+    - Clear boundaries between UI, business logic, and data access
+    - Reusable UI primitives (`Button`, `Card`, `Avatar`, etc.)
+    - Feature-based component organization
 
 2. **Type Safety**
-   - Comprehensive TypeScript interfaces for all data models
-   - Strict type checking across the codebase
-   - Type-safe API responses
+    - Comprehensive TypeScript interfaces for all data models
+    - Strict type checking across the codebase
+    - Type-safe API responses
 
 3. **Performance First**
-   - Code splitting at route and component level
-   - React Query for automatic caching and deduplication
-   - Lazy loading of heavy dependencies (charts)
-   - Optimized bundle with tree shaking
+    - Code splitting at route and component level
+    - React Query for automatic caching and deduplication
+    - Lazy loading of heavy dependencies (charts)
+    - Optimized bundle with tree shaking
 
 4. **Scalability**
-   - Modular architecture for easy feature addition
-   - Centralized configuration and constants
-   - Extensible API client design
-   - Plugin-ready state management
+    - Modular architecture for easy feature addition
+    - Centralized configuration and constants
+    - Extensible API client design
+    - Plugin-ready state management
 
 ---
 
@@ -196,6 +211,7 @@ Built for the portfolio to showcase modern full-stack development skills.
 ### **Optimization Strategies**
 
 #### **1. Code Splitting & Lazy Loading**
+
 ```typescript
 // Charts loaded on-demand, reducing initial bundle by 40%
 const RevenueChart = dynamic(
@@ -205,23 +221,26 @@ const RevenueChart = dynamic(
 ```
 
 #### **2. Intelligent Caching**
+
 ```typescript
 // Shared cache between routes - zero API calls on navigation
 useQuery({
-  queryKey: ['crypto', 'top', limit],
-  queryFn: () => getTopCryptos(limit),
-  staleTime: 5 * 60 * 1000, // Fresh for 5 minutes
-  gcTime: 10 * 60 * 1000,   // Garbage collect after 10 minutes
+    queryKey: ['crypto', 'top', limit],
+    queryFn: () => getTopCryptos(limit),
+    staleTime: 5 * 60 * 1000, // Fresh for 5 minutes
+    gcTime: 10 * 60 * 1000, // Garbage collect after 10 minutes
 });
 ```
 
 #### **3. React Query Configuration**
+
 - Stale-while-revalidate pattern
 - Background refetching disabled to reduce API calls
 - Automatic request deduplication
 - Query key normalization for cache sharing
 
 #### **4. Bundle Optimization**
+
 - Webpack code splitting for major libraries
 - Tree shaking for unused code removal
 - Package import optimization (Lucide, Recharts)
@@ -229,15 +248,16 @@ useQuery({
 
 ### **Performance Metrics**
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| **Initial Bundle** | 850 KB | 510 KB | ✅ **40% smaller** |
-| **Time to Interactive** | 2.8s | 1.4s | ✅ **50% faster** |
-| **Component Re-renders** | 45 | 8 | ✅ **82% fewer** |
-| **API Calls/Navigation** | 20 | 6 | ✅ **70% fewer** |
-| **Memory Usage** | 80 MB | 45 MB | ✅ **44% less** |
+| Metric                   | Before | After  | Improvement        |
+| ------------------------ | ------ | ------ | ------------------ |
+| **Initial Bundle**       | 850 KB | 510 KB | ✅ **40% smaller** |
+| **Time to Interactive**  | 2.8s   | 1.4s   | ✅ **50% faster**  |
+| **Component Re-renders** | 45     | 8      | ✅ **82% fewer**   |
+| **API Calls/Navigation** | 20     | 6      | ✅ **70% fewer**   |
+| **Memory Usage**         | 80 MB  | 45 MB  | ✅ **44% less**    |
 
 ### **Lighthouse Score** (Expected)
+
 - **Performance**: 95-100
 - **Accessibility**: 100
 - **Best Practices**: 100
@@ -255,38 +275,41 @@ useQuery({
 ### **Installation**
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/crypto-dashboard.git
-   cd crypto-dashboard
-   ```
+
+    ```bash
+    git clone https://github.com/yourusername/crypto-dashboard.git
+    cd crypto-dashboard
+    ```
 
 2. **Install dependencies**
-   ```bash
-   pnpm install
-   ```
+
+    ```bash
+    pnpm install
+    ```
 
 3. **Run the development server**
-   ```bash
-   pnpm dev
-   ```
+
+    ```bash
+    pnpm dev
+    ```
 
 4. **Open your browser**
-   ```
-   http://localhost:3000
-   ```
+    ```
+    http://localhost:3000
+    ```
 
 ### **Available Scripts**
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Build for production |
+| Command              | Description                   |
+| -------------------- | ----------------------------- |
+| `pnpm dev`           | Start development server      |
+| `pnpm build`         | Build for production          |
 | `pnpm build:analyze` | Build and analyze bundle size |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm test` | Run tests in watch mode |
-| `pnpm test:ui` | Open Vitest UI |
-| `pnpm test:coverage` | Generate coverage report |
+| `pnpm start`         | Start production server       |
+| `pnpm lint`          | Run ESLint                    |
+| `pnpm test`          | Run tests in watch mode       |
+| `pnpm test:ui`       | Open Vitest UI                |
+| `pnpm test:coverage` | Generate coverage report      |
 
 ---
 
@@ -295,10 +318,17 @@ useQuery({
 ```
 dashboard/
 ├── app/
-│   ├── dashboard/              # Dashboard routes
-│   │   ├── analytics/          # Analytics page with market data
+│   ├── dashboard/              # Dashboard route
 │   │   ├── layout.tsx          # Dashboard layout (sidebar + topbar)
 │   │   └── page.tsx            # Main dashboard page
+│   ├── analytics/              # Analytics route (separate from dashboard)
+│   │   ├── layout.tsx          # Analytics layout (sidebar + topbar)
+│   │   └── page.tsx            # Market analytics page
+│   ├── api/                    # API routes
+│   │   └── crypto/             # Crypto API endpoint with server-side caching
+│   │       └── route.ts
+│   ├── icon.svg                # Favicon (auto-detected by Next.js)
+│   ├── opengraph-image.tsx     # Social sharing image
 │   ├── providers.tsx           # React Query & Error Boundary providers
 │   ├── layout.tsx              # Root layout
 │   └── globals.css             # Global styles & Tailwind
@@ -365,7 +395,8 @@ dashboard/
 │   └── stores/                 # Store tests
 │
 ├── public/                     # Static assets
-├── next.config.js              # Next.js configuration
+├── next.config.js              # Next.js configuration (with bundle analyzer)
+├── vercel.json                 # Vercel deployment configuration
 ├── tailwind.config.ts          # Tailwind CSS configuration
 ├── tsconfig.json               # TypeScript configuration
 ├── vitest.config.ts            # Vitest configuration
@@ -431,39 +462,46 @@ describe('Button', () => {
 ### **Code Quality**
 
 ✅ **TypeScript Strict Mode**
+
 - No implicit any
 - Strict null checks
 - Full type coverage
 
 ✅ **Component Patterns**
+
 - Functional components with hooks
 - Proper prop typing with interfaces
 - Compound component pattern for complex UI
 
 ✅ **Performance Patterns**
+
 - Lazy loading for heavy components
 - Code splitting at route level
 - Proper dependency arrays in hooks
 
 ✅ **Accessibility**
+
 - Semantic HTML5 elements
 - ARIA labels and roles
 - Keyboard navigation support
 - Focus management
 
 ✅ **Error Handling**
+
 - Error boundaries for React errors
 - API error handling with retry
 - User-friendly error messages
 - Development vs production modes
 
 ✅ **State Management**
+
 - Server state with React Query
 - Client state with Zustand
 - No prop drilling
 - Minimal re-renders
 
 ✅ **File Organization**
+
 - Feature-based folder structure
 - Barrel exports for clean imports
 - Co-located tests
@@ -498,11 +536,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
+**Saulo Veiga**
 
-- Portfolio: [your-portfolio.com](https://your-portfolio.com)
-- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- GitHub: [@yourusername](https://github.com/yourusername)
+- Portfolio: https://saulo-veiga.vercel.app/
+- LinkedIn: https://www.linkedin.com/in/saulo-saraiva/
 
 ---
 
