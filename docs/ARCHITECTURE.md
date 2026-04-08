@@ -13,10 +13,17 @@ This document explains the architectural decisions and patterns used in this Cry
 ```
 app/
 ├── dashboard/
-│   ├── layout.tsx          # Dashboard shell with sidebar & topbar
-│   ├── page.tsx            # Overview page
-│   └── analytics/
-│       └── page.tsx        # Analytics page
+│   ├── layout.tsx          # Dashboard layout with sidebar
+│   └── page.tsx            # Main dashboard page
+├── analytics/
+│   ├── layout.tsx          # Analytics layout with sidebar
+│   └── page.tsx            # Market analytics page
+├── api/
+│   └── crypto/
+│       └── route.ts        # Server-side crypto API with caching
+├── icon.svg                # Favicon
+├── opengraph-image.tsx     # Social sharing image
+├── providers.tsx           # React Query & Error Boundary
 ├── layout.tsx              # Root layout
 ├── page.tsx                # Home (redirects to dashboard)
 └── globals.css             # Global styles & design tokens
@@ -30,20 +37,42 @@ app/
 
 ```
 components/
-├── layout/                 # Layout components (Sidebar, Topbar)
-├── ui/                     # Primitive components (Button, Card, etc.)
-├── charts/                 # Chart components
-└── dashboard/              # Feature-specific components
+├── layout/                 # Layout components
+│   ├── Sidebar.tsx         # Responsive sidebar with navigation
+│   └── NavLink.tsx         # Memoized navigation link
+├── ui/                     # Reusable UI primitives
+│   ├── Button.tsx          # Button component with variants
+│   ├── Card.tsx            # Card container
+│   ├── LoadingSpinner.tsx  # Loading indicator
+│   ├── ErrorMessage.tsx    # Error display with retry
+│   ├── CryptoListItem.tsx  # Crypto list item
+│   └── ...                 # Other UI primitives
+├── charts/                 # Chart components (lazy loaded)
+│   ├── TrafficPieChart.tsx # Market share pie chart
+│   └── PageViewsChart.tsx  # Volume bar chart
+├── dashboard/              # Dashboard-specific components
+│   ├── MetricCard.tsx      # Crypto metric card
+│   ├── RevenueChart.tsx    # Price history chart
+│   ├── TrendingCoins.tsx   # Trending coins list
+│   ├── TopProducts.tsx     # Top cryptos by market cap
+│   └── MarketMovers.tsx    # 24h price movers
+└── ErrorBoundary.tsx       # Global error boundary
 ```
 
 **Hierarchy:**
 
 1. **layout/** - Shell components (used once per layout)
-2. **ui/** - Primitive, reusable building blocks
-3. **charts/** - Data visualization components
+2. **ui/** - Primitive, reusable building blocks (Button, Card, etc.)
+3. **charts/** - Data visualization components (lazy loaded for performance)
 4. **dashboard/** - Feature-specific, composed components
 
-**Pattern:** Components should be small (<150 lines), single-purpose, and composable.
+**Pattern:** Components should be small (<200 lines), single-purpose, and composable.
+
+**Key Design Decisions:**
+- UI primitives are fully reusable across the app
+- Charts are lazy loaded with `next/dynamic` for performance
+- Dashboard components compose UI primitives
+- No user profile components (general dashboard, not client-specific)
 
 ---
 

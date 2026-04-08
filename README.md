@@ -319,10 +319,10 @@ useQuery({
 dashboard/
 ├── app/
 │   ├── dashboard/              # Dashboard route
-│   │   ├── layout.tsx          # Dashboard layout (sidebar + topbar)
+│   │   ├── layout.tsx          # Dashboard layout with sidebar
 │   │   └── page.tsx            # Main dashboard page
 │   ├── analytics/              # Analytics route (separate from dashboard)
-│   │   ├── layout.tsx          # Analytics layout (sidebar + topbar)
+│   │   ├── layout.tsx          # Analytics layout with sidebar
 │   │   └── page.tsx            # Market analytics page
 │   ├── api/                    # API routes
 │   │   └── crypto/             # Crypto API endpoint with server-side caching
@@ -336,7 +336,6 @@ dashboard/
 ├── components/
 │   ├── layout/                 # Layout components
 │   │   ├── Sidebar.tsx         # Responsive sidebar navigation
-│   │   ├── Topbar.tsx          # Top navigation bar
 │   │   └── NavLink.tsx         # Memoized navigation link
 │   ├── dashboard/              # Dashboard-specific components
 │   │   ├── MetricCard.tsx      # Crypto metric display card
