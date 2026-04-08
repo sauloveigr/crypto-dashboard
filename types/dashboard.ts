@@ -43,7 +43,7 @@ export interface Transaction {
 export interface Product {
   id: string;
   name: string;
-  sales: number;
+  sales: string | number;
   revenue: string;
 }
 
